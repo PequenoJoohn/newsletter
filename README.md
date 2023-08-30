@@ -39,6 +39,16 @@ npm start
 
 1. Abra o seu navegador e acesse http://localhost:3000 para ver a página de inscrição em ação em diferentes dispositivos.
 
+2. Para iniciar o servidor backend na pasta service:
+
+```bash
+cd service
+npm install
+npm start
+```
+
+Agora, o servidor backend estará rodando em http://localhost:3001.
+
 ## Contribuição
 
 Contribuições são bem-vindas! Se você encontrar algum problema ou tiver sugestões para melhorias, sinta-se à vontade para abrir uma issue ou enviar um pull request.

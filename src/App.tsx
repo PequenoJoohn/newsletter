@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import "./App.css";
+import api from "./api/api";
 
 function App() {
   const [email, setEmail] = useState<string>("");
@@ -7,15 +8,13 @@ function App() {
   const [inputError, setInputError] = useState(false);
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
-  console.log(windowSize);
-
   const optionList = [
     "Product discovery and building what matters",
     "Measuring to ensure updates are a success",
     "And much more!",
   ];
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const validateEmail = /^[\w.-]+@[\w.-]+\.\w+$/;
@@ -25,6 +24,11 @@ function App() {
     }
 
     SetIsSuccess(true);
+    try {
+      await api.post("/address-send", { email });
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+    }
   };
 
   const handleChangeEmail = (response: React.ChangeEvent<HTMLInputElement>) => {
